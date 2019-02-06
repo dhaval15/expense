@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1033912290672",
+    "firebase_url": "https://expense-money.firebaseio.com",
+    "project_id": "expense-money",
+    "storage_bucket": "expense-money.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1033912290672:android:9f7e3972fdfeb935",
+        "android_client_info": {
+          "package_name": "org.infinity.expense"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1033912290672-2m5e7cpkoq2rlivk95vg0226squ20dq3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.infinity.expense",
+            "certificate_hash": "72edca9c9470f6323e7fc5c65821ae1b5ff44549"
+          }
+        },
+        {
+          "client_id": "1033912290672-stdc3u1168107j3vmm9llg1dr8bj98i5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkSPf9hKJHZKnRNfEQYUdMYFlQ6RAN2vc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1033912290672-stdc3u1168107j3vmm9llg1dr8bj98i5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
