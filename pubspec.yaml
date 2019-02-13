@@ -21,6 +21,11 @@ dependencies:
   cupertino_icons: ^0.1.2
   firebase_database: ^1.0.5
   firebase_auth: ^0.6.6
+  contacts_service: ^0.1.1
+  timeago: ^2.0.10
+  rapido: ^0.1.6
+  country_pickers: ^1.0.1
+  flutter_colorpicker: any
   rxdart: any
 
 dev_dependencies:

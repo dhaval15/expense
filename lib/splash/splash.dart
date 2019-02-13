@@ -1,8 +1,10 @@
+import 'package:expense/auth/auth.dart';
+
+import '../theme/background.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:rxdart/rxdart.dart';
-import '../theme/theme.dart' as theme;
-import '../auth/auth.dart';
+import '../theme/theme.dart' show ThemeProvider;
 
 class SplashBloc {
   final String title = 'Expense';
@@ -52,56 +54,60 @@ class SplashState extends State<Splash> {
 
   void _delay() async {
     await Future.delayed(Duration(seconds: 5));
-    Navigator.of(context).push(Auth.builder);
+    Navigator.of(context).pushReplacement(Auth.builder);
   }
 
   @override
   Widget build(BuildContext context) {
     final bloc = widget.bloc;
+    final ui = ThemeProvider.of(context)();
     return SplashProvider(
       bloc: bloc,
-      child: Scaffold(
-        backgroundColor: theme.splash_screen_colors[0],
-        body: SafeArea(
-          child: Container(
-            padding: EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: theme.splash_screen_colors,
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Hero(
-                    tag: 'app_title',
-                    child: Text(
-                      bloc.title,
-                      style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: 3,
-                        color: theme.white_text,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 16.0),
-                  StreamBuilder<String>(
-                    stream: bloc.motto,
-                    initialData: '',
-                    builder: (context, snapshot) => Text(
-                          snapshot.data,
-                          style: TextStyle(
-                            color: theme.white_text,
-                          ),
+      child: BackGround(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              HeroTitle(),
+              SizedBox(height: 16.0),
+              GestureDetector(
+                onTap: () {},
+                child: StreamBuilder<String>(
+                  stream: bloc.motto,
+                  initialData: '',
+                  builder: (context, snapshot) => Text(
+                        snapshot.data,
+                        style: TextStyle(
+                          color: ui.titleColor,
                         ),
-                  ),
-                ],
+                      ),
+                ),
               ),
-            ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class HeroTitle extends StatelessWidget {
+  final title = 'Expense';
+
+  @override
+  Widget build(BuildContext context) {
+    final ui = ThemeProvider.of(context)();
+    return Hero(
+      tag: 'app_title',
+      child: Material(
+        color: Colors.transparent,
+        child: Text(
+          title,
+          style: TextStyle(
+            fontSize: 40,
+            fontWeight: FontWeight.w500,
+            letterSpacing: 3,
+            color: ui.titleColor,
           ),
         ),
       ),

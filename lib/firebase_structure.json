@@ -1,0 +1,72 @@
+{
+  "users": {
+    "$phone": {
+      "props": [
+        "uid",
+        "displayName",
+        "phone"
+      ],
+      "validation": [
+        "all props",
+        "uid===auth.uid"
+      ]
+    },
+    "$other": null
+  },
+  "transactions": {
+    "$tId": {
+      "props": [
+        "tId",
+        "shareId",
+        "isGroup",
+        "groupId",
+        "date-time",
+        "topics",
+        "commitId"
+      ],
+      "validation": [
+        "all props",
+        "auth.uid===commitId",
+        "commitId is in Group",
+        "date-time < now()",
+        "no change if out of group"
+      ],
+      "other": null
+    }
+  },
+  "shares": {
+    "sId": {
+      "props": [
+        "allShares",
+        "groupId",
+        "commitId"
+      ],
+      "validation": [
+        "all props",
+        "commitId in Group",
+        "allShares in Group",
+        "auth.uid===commitId",
+        "no change if out of group"
+      ],
+      "other": null
+    }
+  },
+  "groups": {
+    "$gId": {
+      "props": [
+        "groupId",
+        "name",
+        "description",
+        "creationDate",
+        "admin",
+        "users"
+      ],
+      "validation": [
+        "all props",
+        "admin==auth.uid",
+        "creationDate < now() ",
+        "no change if out of group"
+      ]
+    }
+  }
+}
